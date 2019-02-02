@@ -1,7 +1,7 @@
 do_psspred: False
 pss_path:  '/home/h3nnn4n/PSSpred/PSSpred.pl'
 
-do_psipred: False
+do_psipred: True
 psipred_path: '/home/h3nnn4n/progs/psipred'
 psipred_bin: 'runpsipred'
 
