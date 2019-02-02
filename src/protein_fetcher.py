@@ -8,14 +8,14 @@ import os
 
 
 def fetch(config, target):
-    if not os.path.exists(target):
+    if not os.path.exists(config['output_path']):
         os.makedirs(config['output_path'])
 
     original_path = os.getcwd()
     os.chdir(config['output_path'])
 
     if os.path.exists(target):
-        print("Target exists, skipping...")
+        print("Target already %s exists on %s, skipping..." % (target, config['output_path']))
         os.chdir(original_path)
         return
 
