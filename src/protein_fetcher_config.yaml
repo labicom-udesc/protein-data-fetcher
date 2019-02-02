@@ -1,0 +1,9 @@
+do_psspred: False
+pss_path:  '/home/h3nnn4n/PSSpred/PSSpred.pl'
+
+do_psipred: True
+psipred_path: '/home/h3nnn4n/progs/psipred'
+psipred_bin: 'runpsipred'
+
+do_fragpicking: False
+frag_path: '../../tools/frag_picker/frag_picker.sh'
