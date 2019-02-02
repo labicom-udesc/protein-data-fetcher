@@ -126,7 +126,7 @@ def extract_chain_from_fasta(target, pdbid, target_chain):
 def extract_chain_from_pdb(target, pdbid, chain):
     parser = Bio.PDB.PDBParser()
     pdbio = Bio.PDB.PDBIO()
-    chain_pdb = parser.get_structure(pdbid, pdbid + '.pdb')
+    chain_pdb = parser.get_structure(pdbid, pdbid.lower() + '.pdb')
     pdbio.set_structure(chain_pdb)
     pdbio.save(target + '.pdb', select=Selector(chain))
 
