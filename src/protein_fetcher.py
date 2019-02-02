@@ -8,6 +8,23 @@ import sys
 import os
 
 
+class Selector:
+    def __init__(self, chain):
+        self.chain = chain.upper()
+
+    def accept_chain(self, chain):
+        return (chain.get_id().upper() == self.chain)
+
+    def accept_model(self, _):
+        return True
+
+    def accept_residue(self, _):
+        return True
+
+    def accept_atom(self, _):
+        return True
+
+
 def fetch(config, target):
     if not os.path.exists(config['output_path']):
         os.makedirs(config['output_path'])
@@ -104,23 +121,6 @@ def extract_chain_from_fasta(target, pdbid, target_chain):
                 return
 
     raise Exception('Chain %s was not found on %s' % (chain, pdbid))
-
-
-class Selector:
-    def __init__(self, chain):
-        self.chain = chain.upper()
-
-    def accept_chain(self, chain):
-        return (chain.get_id().upper() == self.chain)
-
-    def accept_model(self, _):
-        return True
-
-    def accept_residue(self, _):
-        return True
-
-    def accept_atom(self, _):
-        return True
 
 
 def extract_chain_from_pdb(target, pdbid, chain):
