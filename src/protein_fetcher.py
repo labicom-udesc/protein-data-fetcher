@@ -34,7 +34,6 @@ def fetch(config, target):
         run_psspred(config, target)
 
     if config['do_psipred']:
-        os.makedirs('psipred')
         run_psipred(config, target)
 
     if config['do_fragpicking']:
