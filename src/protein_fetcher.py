@@ -26,13 +26,13 @@ def fetch(config, target):
     fetch_native_pdb(target, pdbid)
     fetch_fasta(target, pdbid, chain)
 
-    if do_psspred:
-        run_psspred(target)
+    if config['do_psspred']:
+        run_psspred(config, target)
 
-    if do_psipred:
-        run_psipred(target)
+    if config['do_psipred']:
+        run_psipred(config, target)
 
-    if do_fragpicking:
+    if config['do_fragpicking']:
         frag_path = config['frag_path']
         subprocess.call([frag_path, target])
 
@@ -134,7 +134,7 @@ def run_psipred(config, target):
     os.chdir(psipred_path)
 
     subprocess.call([
-        os.path.join(psipred_path, psipred_bin),
+        os.path.join(psipred_path, config['psipred_bin']),
         os.path.join(original_path, (target + '.fasta'))
     ])
 
