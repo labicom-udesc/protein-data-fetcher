@@ -5,7 +5,7 @@ do_psipred: True
 psipred_path: '/home/h3nnn4n/progs/psipred'
 psipred_bin: 'runpsipred'
 
-do_fragpicking: False
-frag_path: '../../tools/frag_picker/frag_picker.sh'
+do_fragpicking: True
+frag_path: '../../src/frag_picker.sh'
 
 output_path: '../protein_data'
