@@ -3,7 +3,7 @@ import requests
 import shutil
 import yaml
 import gzip
-import Bio
+import Bio.PDB
 import sys
 import os
 
@@ -106,19 +106,28 @@ def extract_chain_from_fasta(target, pdbid, target_chain):
     raise Exception('Chain %s was not found on %s' % (chain, pdbid))
 
 
-class SelectChains:
+class Selector:
     def __init__(self, chain):
         self.chain = chain.upper()
 
     def accept_chain(self, chain):
-        return (chain.get_id().upper() == self.chain_letters)
+        return (chain.get_id().upper() == self.chain)
+
+    def accept_model(self, _):
+        return True
+
+    def accept_residue(self, _):
+        return True
+
+    def accept_atom(self, _):
+        return True
 
 
 def extract_chain_from_pdb(target, pdbid, chain):
-    parser = PDB.PDBParser()
-    pdbio = PDB.PDBIO()
+    parser = Bio.PDB.PDBParser()
+    pdbio = Bio.PDB.PDBIO()
     chain_pdb = parser.get_structure(pdbid, pdbid + '.pdb')
-    pdbio.set_structure(struct)
+    pdbio.set_structure(chain_pdb)
     pdbio.save(target + '.pdb', select=Selector(chain))
 
 
