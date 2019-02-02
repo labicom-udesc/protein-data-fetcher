@@ -3,6 +3,7 @@ import requests
 import shutil
 import yaml
 import gzip
+import Bio
 import sys
 import os
 
@@ -85,6 +86,7 @@ def fetch_fasta(target, pdbid, chain):
         if chain is None:
             raise Exception('Target %s has %d chains but not was specified' % (pdbid, chain_count))
         extract_chain_from_fasta(target, pdbid, chain)
+        extract_chain_from_pdb(target, pdbid, chain)
 
 
 def extract_chain_from_fasta(target, pdbid, target_chain):
@@ -102,6 +104,22 @@ def extract_chain_from_fasta(target, pdbid, target_chain):
                 return
 
     raise Exception('Chain %s was not found on %s' % (chain, pdbid))
+
+
+class SelectChains:
+    def __init__(self, chain):
+        self.chain = chain.upper()
+
+    def accept_chain(self, chain):
+        return (chain.get_id().upper() == self.chain_letters)
+
+
+def extract_chain_from_pdb(target, pdbid, chain):
+    parser = PDB.PDBParser()
+    pdbio = PDB.PDBIO()
+    chain_pdb = parser.get_structure(pdbid, pdbid + '.pdb')
+    pdbio.set_structure(struct)
+    pdbio.save(target + '.pdb', select=Selector(chain))
 
 
 def count_nchain_in_fasta(target):
