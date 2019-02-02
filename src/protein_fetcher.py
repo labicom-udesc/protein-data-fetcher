@@ -8,8 +8,15 @@ import os
 
 
 def fetch(config, target):
+    if not os.path.exists(target):
+        os.makedirs(config['output_path'])
+
+    original_path = os.getcwd()
+    os.chdir(config['output_path'])
+
     if os.path.exists(target):
         print("Target exists, skipping...")
+        os.chdir(original_path)
         return
 
     print("Summoning %s" % target)
@@ -19,24 +26,23 @@ def fetch(config, target):
     os.makedirs(target)
     os.chdir(target)
 
-    os.makedirs('output')
-    os.makedirs('psspred')
-    os.makedirs('psipred')
-
     fetch_native_pdb(target, pdbid)
     fetch_fasta(target, pdbid, chain)
 
     if config['do_psspred']:
+        os.makedirs('psspred')
         run_psspred(config, target)
 
     if config['do_psipred']:
+        os.makedirs('psipred')
         run_psipred(config, target)
 
     if config['do_fragpicking']:
+        os.makedirs('output')
         frag_path = config['frag_path']
         subprocess.call([frag_path, target])
 
-    os.chdir("../")
+    os.chdir(original_path)
 
 
 def get_pdb_code_and_chain(target):
