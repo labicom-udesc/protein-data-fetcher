@@ -32,8 +32,8 @@ def fetch(config, target):
     original_path = os.getcwd()
     os.chdir(config['output_path'])
 
-    if os.path.exists(target):
-        print("Target already %s exists on %s, skipping..." % (target, config['output_path']))
+    if os.path.exists(target[:4].lower()):
+        print("Target already %s exists on %s, skipping..." % (target[:4].lower(), config['output_path']))
         os.chdir(original_path)
         return
 
