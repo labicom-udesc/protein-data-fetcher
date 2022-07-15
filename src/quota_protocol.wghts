@@ -1,0 +1,10 @@
+# score name          priority  wght   max  extras
+SecondarySimilarity   350       1.0    -    predA
+SecondarySimilarity   300       1.0    -    predB
+SecondarySimilarity   250       1.0    -    predC
+RamaScore             150       2.0    -    predA
+RamaScore             150       2.0    -    predB
+RamaScore             150       2.0    -    predC
+ProfileScoreL1        200   	2.0    -
+PhiPsiSquareWell	  100	    0.0	   -
+FragmentCrmsd         30 	    0.0    -

@@ -1,9 +1,20 @@
-do_psspred: False
-pss_path:  '/home/h3nnn4n/PSSpred/PSSpred.pl'
+do_sspro8: False
+sspro8_path:  '/home/nilcimar/workspace/protein-data-fetcher/SCRATCH-1D_1.2/install.pl'
 
-do_psipred: True
-psipred_path: '/home/h3nnn4n/progs/psipred'
-psipred_bin: 'runpsipred'
+do_psspred: False
+pss_path:  '/home/nilcimar/workspace/protein-data-fetcher/PSSpred/PSSpred.pl'
+
+do_mufold: False
+
+do_raptorx: False
+
+do_spider: False
+spider_path: '/home/nilcimar/workspace/protein-data-fetcher/SPIDER2_local/misc'
+spider_bin: 'run_local.sh'
+
+do_psipred: False
+psipred_path: '/home/nilcimar/workspace/protein-data-fetcher/psipred.4.02/psipred'
+psipred_bin: 'runpsipredplus'
 
 do_fragpicking: True
 frag_path: '../../src/frag_picker.sh'

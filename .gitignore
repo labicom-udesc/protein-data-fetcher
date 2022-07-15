@@ -1,3 +1,14 @@
 __pycache__
 ????
 .vscode
+.idea
+blast_db
+nr
+protein_data_psipred
+psipred.4.02
+PSSpred
+SPIDER2_local
+SPIDER3_local
+PSSpred_v4.tar.bz2
+SPIDER2_local.tgz
+nr.tar.gz
